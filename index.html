@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>📲 Contact me here 💬</title>
+    <meta content="https://s15.gifyu.com/images/bQ5ei.png" property="og:image" />
+    
+    <!-- Import Google Fonts modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;0,900;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body, html {
+            height: 100vh;
+            height: 100dvh;
+            width: 100vw;
+            overflow: hidden;
+            position: fixed;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            filter: blur(6px);
+            -webkit-filter: blur(6px);
+            transform: scale(1.15); 
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            gap: clamp(14px, 2.5vh, 24px);
+            overflow: hidden;
+        }
+
+        .top-badges-wrapper {
+            position: absolute;
+            top: max(2.5vh, 16px);
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 max(4vw, 20px);
+            width: 100%;
+            z-index: 10;
+        }
+
+        .left-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .live-badge-top, .view-badge-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6px 12px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .social-icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(28px, 3.8vw, 34px);
+            height: clamp(28px, 3.8vw, 34px);
+            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon-btn:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .social-icon-btn svg {
+            width: clamp(14px, 2vw, 18px);
+            height: clamp(14px, 2vw, 18px);
+            fill: #ffffff;
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #FF0000;
+            border-radius: 50%;
+            animation: liveBlink 1.2s infinite ease-in-out;
+        }
+
+        .live-text, .view-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.65rem, 1.1vw, 0.8rem);
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .view-badge-top svg {
+            width: clamp(12px, 1.8vw, 16px);
+            height: clamp(12px, 1.8vw, 16px);
+            fill: #ffffff;
+            flex-shrink: 0;
+        }
+
+        @keyframes liveBlink {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(0.75); opacity: 0.4; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .text-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: clamp(10px, 1.8vh, 14px);
+            flex-shrink: 0;
+        }
+
+        .arrow-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: clamp(6px, 1.2vh, 9px) clamp(16px, 2.5vw, 22px);
+            background: rgba(0, 0, 0, 0.65);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin: 0 auto;
+        }
+
+        .online-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #39FF14;
+            border-radius: 50%;
+            animation: liveBlink 1.2s infinite ease-in-out;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.7rem, 1.6vw, 0.9rem);
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .gradient-text {
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
+            font-weight: 900;
+        }
+
+        .sub-hook-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.95rem, 2.4vw, 1.25rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 20%, #ffdfba 50%, #ff85b3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 15px rgba(255, 133, 179, 0.4), 0 0 30px rgba(255, 223, 186, 0.3);
+            margin: 0 auto;
+            max-width: 90vw;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            flex-shrink: 0;
+            gap: clamp(10px, 1.8vh, 14px);
+        }
+
+        .btn-single {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(8px, 1.5vw, 12px);
+            padding: clamp(12px, 1.8vh, 16px) clamp(24px, 3.5vw, 36px);
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.8rem, 1.6vw, 1.05rem);
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 0 auto;
+            width: min(82vw, 340px);
+            background: linear-gradient(135deg, #ff2a85 0%, #7928ca 100%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border-radius: 50px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: superPulse 2s infinite ease-in-out;
+        }
+
+        .join-notification {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(0.55rem, 1.0vw, 0.68rem);
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.85);
+            background: transparent;
+            padding: clamp(4px, 0.8vh, 6px) clamp(10px, 1.8vw, 14px);
+            border-radius: 12px; 
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            letter-spacing: 0.4px;
+            margin: 0 auto;
+        }
+
+        .join-notification span {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .text-green {
+            color: #39FF14;
+            -webkit-text-fill-color: #39FF14;
+        }
+
+        .text-red {
+            color: #000000;
+            -webkit-text-fill-color: #000000;
+        }
+
+        .btn-single svg {
+            width: clamp(14px, 1.8vw, 18px);
+            height: clamp(14px, 1.8vw, 18px);
+            fill: #39FF14;
+            flex-shrink: 0;
+        }
+
+        .flag-badge-bottom {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 5px 14px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            margin: 0 auto;
+        }
+
+        .flag-icon {
+            font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+            line-height: 1;
+        }
+
+        .btn-single:hover {
+            transform: translateY(-3px) scale(1.05);
+            letter-spacing: 1.3px;
+            background: linear-gradient(135deg, #ff3393 0%, #8a35dc 100%);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-single:active {
+            transform: translateY(2px) scale(1.01);
+        }
+
+        @keyframes superPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- STYLE UNTUK ANIMASI GELEMBUNG LIKE & THUMBS UP --- */
+        .like-bubble-container {
+            position: fixed;
+            bottom: 20px;
+            right: 25px;
+            width: 80px;
+            height: 250px;
+            pointer-events: none;
+            z-index: 99;
+            overflow: hidden;
+        }
+
+        .floating-item {
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+            animation: floatUpItem 3s ease-out forwards;
+            opacity: 0;
+        }
+
+        .floating-item svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .heart-svg {
+            filter: drop-shadow(0px 2px 8px rgba(255, 42, 133, 0.5));
+        }
+
+        .thumb-svg {
+            filter: drop-shadow(0px 2px 8px rgba(0, 132, 255, 0.6));
+        }
+
+        @keyframes floatUpItem {
+            0% {
+                transform: translateY(0) scale(0.3) rotate(0deg);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.95;
+                transform: translateY(-30px) scale(1) rotate(-8deg);
+            }
+            50% {
+                transform: translateY(-110px) scale(1.1) rotate(10deg);
+            }
+            80% {
+                opacity: 0.8;
+                transform: translateY(-180px) scale(0.95) rotate(-5deg);
+            }
+            100% {
+                transform: translateY(-240px) scale(0.6) rotate(8deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-badges-wrapper">
+        <div class="left-group">
+            <div class="live-badge-top">
+                <div class="live-dot"></div>
+                <span class="live-text">LIVE</span>
+            </div>
+            <!-- Facebook Logo Link -->
+            <a href="javascript:void(0);" onclick="handleSocialClick(event)" class="social-icon-btn" title="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/>
+                </svg>
+            </a>
+            <!-- Instagram Logo Link -->
+            <a href="javascript:void(0);" onclick="handleSocialClick(event)" class="social-icon-btn" title="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a>
+        </div>
+        <div class="view-badge-top">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            </svg>
+            <span class="view-text" id="viewerCount">1,428</span>
+        </div>
+    </div>
+
+    <div class="video-background">
+        <video id="bgVideo" autoplay loop muted playsinline>
+            <source id="videoSource" src="https://videotourl.com/videos/1790108790705-60736c02-e6bc-49b2-869e-37acf66cb78f.mp4" type="video/mp4">
+            Browser Anda tidak mendukung video HTML5.
+        </video>
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="container" id="mainContainer">
+        <div class="text-group">
+            <div class="arrow-badge">
+                <div class="online-dot"></div>
+                <h1><span class="gradient-text" id="welcomeText">ONLINE</span></h1>
+            </div>
+            <div class="sub-hook-text" id="subHookText">📲 Contact me here 💬</div>
+        </div>
+
+        <div class="button-group">
+            <!-- Tombol Utama -->
+            <button class="btn-single" onclick="handleClick()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" />
+                </svg>
+                <span><span class="text-green" id="btnOnline">online!</span> <span class="text-red" id="btnAction">click me!</span></span>
+            </button>
+
+            <!-- Elemen Username -->
+            <div class="join-notification" id="joinNotification">
+                <span id="randomUsername">Liam_Miller</span> <span id="joinText">has joined</span> <span id="timeAgo">2 min ago</span>
+            </div>
+
+            <!-- Bendera Negara di Bawah -->
+            <div class="flag-badge-bottom" id="flagBadge">
+                <span class="flag-icon" id="flagIcon">🇺🇸</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container untuk gelembung like & jempol -->
+    <div class="like-bubble-container" id="likeBubbleContainer"></div>
+
+    <script>
+        const translations = {
+            'ID': { welcome: 'ONLINE', hook: '📲 Hubungi saya di sini 💬', online: 'online!', action: 'klik saya!', joined: 'telah bergabung', timeSuffix: 'yang lalu' },
+            'ES': { welcome: 'EN LÍNEA', hook: '📲 Contáctame aquí 💬', online: '¡en línea!', action: '¡clic aquí!', joined: 'se ha unido', timeSuffix: 'hace' },
+            'MX': { welcome: 'EN LÍNEA', hook: '📲 Contáctame aquí 💬', online: '¡en línea!', action: '¡clic aquí!', joined: 'se ha unido', timeSuffix: 'hace' },
+            'AR': { welcome: 'EN LÍNEA', hook: '📲 اتصل بي هنا 💬', online: '¡en línea!', action: 'click me!', joined: 'انضم', timeSuffix: 'منذ' },
+            'CO': { welcome: 'EN LÍNEA', hook: '📲 Contáctame aquí 💬', online: '¡en línea!', action: '¡clic aquí!', joined: 'se ha unido', timeSuffix: 'hace' },
+            'FR': { welcome: 'EN LIGNE', hook: '📲 Contactez-moi ici 💬', online: 'en ligne !', action: 'cliquez ici !', joined: 'a rejoint', timeSuffix: 'il y a' },
+            'DE': { welcome: 'ONLINE', hook: '📲 Kontaktiere mich hier 💬', online: 'online!', action: 'klick mich!', joined: 'ist beigetreten', timeSuffix: 'vor' },
+            'BR': { welcome: 'ONLINE', hook: '📲 Entre em contato aqui 💬', online: 'online!', action: 'clique aqui!', joined: 'entrou', timeSuffix: 'há' },
+            'PT': { welcome: 'ONLINE', hook: '📲 Contacte-me aqui 💬', online: 'online!', action: 'clique aqui!', joined: 'entrou', timeSuffix: 'há' },
+            'RU': { welcome: 'ОНЛАЙН', hook: '📲 Свяжитесь со мной здесь 💬', online: 'онлайн!', action: 'нажми!', joined: 'присоединился', timeSuffix: 'назад' },
+            'JP': { welcome: 'オンライン', hook: '📲 こちらからご連絡ください 💬', online: 'オンライン！', action: 'クリック！', joined: 'が参加しました', timeSuffix: '前' },
+            'IT': { welcome: 'ONLINE', hook: '📲 Contattami qui 💬', online: 'online!', action: 'clicca qui!', joined: 'si è unito', timeSuffix: 'fa' },
+            'TR': { welcome: 'ÇEVRİMİÇİ', hook: '📲 Buradan bana ulaşın 💬', online: 'çevrim içi!', action: 'tıkla!', joined: 'katıldı', timeSuffix: 'önce' },
+            'KR': { welcome: '온라인', hook: '📲 여기로 연락주세요 💬', online: '온라인!', action: '클릭하세요!', joined: '님이 참여했습니다', timeSuffix: '전' },
+            'VN': { welcome: 'TRỰC TUYẾN', hook: '📲 Liên hệ với tôi ở đây 💬', online: 'trực tuyến!', action: 'bấm vào đây!', joined: 'đã tham gia', timeSuffix: 'trước' },
+            'TH': { welcome: 'ออนไลน์', hook: '📲 ติดต่อฉันที่นี่ 💬', online: 'ออนไลน์!', action: 'คลิกเลย!', joined: 'เข้าร่วมแล้ว', timeSuffix: 'ที่แล้ว' },
+            'IN': { welcome: 'ऑनलाइन', hook: '📲 मुझसे here संपर्क करें 💬', online: 'ऑनलाइन!', action: 'क्लिक करें!', joined: 'जुड़ गया है', timeSuffix: 'पहले' },
+            'SA': { welcome: 'متصل', hook: '📲 اتصل بي هنا 💬', online: 'متصل!', action: 'اضغط هنا!', joined: 'انضم', timeSuffix: 'منذ' },
+            'AE': { welcome: 'متصل', hook: '📲 اتصل بي هنا 💬', online: 'متصل!', action: 'اضغط هنا!', joined: 'انضم', timeSuffix: 'منذ' }
+        };
+
+        const globalMaleUsernames = [
+            "Liam_Miller", "Noah_Davis", "Lucas_Smith", "Mateo_Garcia", 
+            "Alexander_Wilson", "Benjamin_Taylor", "Ethan_Anderson", "Daniel_Thomas", 
+            "Gabriel_Martinez", "Samuel_Hernandez", "Leo_Robinson", "Julian_Walker", 
+            "Maximilian_Wright", "Carlos_Lopez", "Adrian_King", "Caleb_Scott"
+        ];
+
+        let detectedCountry = 'US';
+        let currentLangData = {};
+        let currentViewers = 1428;
+
+        function getFlagEmoji(countryCode) {
+            const codePoints = countryCode
+                .toUpperCase()
+                .split('')
+                .map(char => 127397 + char.charCodeAt());
+            return String.fromCodePoint(...codePoints);
+        }
+
+        function updateRandomNotification() {
+            const randomName = globalMaleUsernames[Math.floor(Math.random() * globalMaleUsernames.length)];
+            const randomMinutes = Math.floor(Math.random() * 5) + 1;
+            
+            document.getElementById('randomUsername').textContent = randomName;
+            
+            let timeString = '';
+            if (detectedCountry === 'ID') {
+                timeString = `${randomMinutes} menit yang lalu`;
+            } else if (detectedCountry === 'ES' || detectedCountry === 'MX' || detectedCountry === 'CO') {
+                timeString = `hace ${randomMinutes} min`;
+            } else if (detectedCountry === 'FR') {
+                timeString = `il y a ${randomMinutes} min`;
+            } else if (detectedCountry === 'DE') {
+                timeString = `vor ${randomMinutes} Min.`;
+            } else if (detectedCountry === 'BR' || detectedCountry === 'PT') {
+                timeString = `há ${randomMinutes} min`;
+            } else if (detectedCountry === 'RU') {
+                timeString = `${randomMinutes} мин назад`;
+            } else if (detectedCountry === 'JP') {
+                timeString = `${randomMinutes}분前`;
+            } else if (detectedCountry === 'KR') {
+                timeString = `${randomMinutes}분 전`;
+            } else if (detectedCountry === 'TR') {
+                timeString = `${randomMinutes} dk önce`;
+            } else if (detectedCountry === 'TH') {
+                timeString = `${randomMinutes} นาทีที่แล้ว`;
+            } else if (detectedCountry === 'VN') {
+                timeString = `${randomMinutes} phút trước`;
+            } else if (detectedCountry === 'AR' || detectedCountry === 'SA' || detectedCountry === 'AE') {
+                timeString = `منذ ${randomMinutes} دقيقة`;
+            } else {
+                timeString = `${randomMinutes} min ago`;
+            }
+
+            document.getElementById('timeAgo').textContent = timeString;
+        }
+
+        function updateViewerCount() {
+            const change = Math.floor(Math.random() * 15) - 6; 
+            currentViewers += change;
+            if (currentViewers < 1200) currentViewers = 1250; 
+            document.getElementById('viewerCount').textContent = currentViewers.toLocaleString('en-US');
+        }
+
+        /* --- SCRIPT UNTUK MEMBUAT ANIMASI GELEMBUNG HATI & JEMPOL BIRU --- */
+        const heartColors = ['#ff2a85', '#ff4d94', '#ff70a6', '#ff0055', '#ff85c0'];
+        const thumbColors = ['#0084ff', '#1877f2', '#2d88ff', '#0099ff'];
+
+        function createFloatingElement() {
+            const container = document.getElementById('likeBubbleContainer');
+            if (!container) return;
+
+            const item = document.createElement('div');
+            item.classList.add('floating-item');
+
+            const size = Math.floor(Math.random() * 16) + 22; // Ukuran 22px - 38px
+            const randomX = Math.floor(Math.random() * 35); // Posisi acak horizontal
+            item.style.width = `${size}px`;
+            item.style.height = `${size}px`;
+            item.style.right = `${randomX}px`;
+
+            // Random pilihan: 50% Hati, 50% Jempol Biru Facebook
+            const isThumb = Math.random() < 0.5;
+
+            if (isThumb) {
+                const color = thumbColors[Math.floor(Math.random() * thumbColors.length)];
+                item.innerHTML = `
+                    <svg class="thumb-svg" viewBox="0 0 24 24" fill="${color}">
+                        <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/>
+                    </svg>
+                `;
+            } else {
+                const color = heartColors[Math.floor(Math.random() * heartColors.length)];
+                item.innerHTML = `
+                    <svg class="heart-svg" viewBox="0 0 24 24" fill="${color}">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                `;
+            }
+
+            container.appendChild(item);
+
+            setTimeout(() => {
+                item.remove();
+            }, 3000);
+        }
+
+        document.addEventListener("DOMContentLoaded", async function() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                if (data && data.country_code) {
+                    detectedCountry = data.country_code.toUpperCase();
+                    applyTranslations(detectedCountry);
+                    document.getElementById('flagIcon').textContent = getFlagEmoji(detectedCountry);
+                }
+            } catch (error) {
+                console.log("Deteksi IP otomatis gagal, menggunakan bahasa & bendera default:", error);
+                applyTranslations('US');
+            }
+
+            updateRandomNotification();
+            setInterval(updateRandomNotification, 2000);
+            setInterval(updateViewerCount, 3000);
+
+            // Interval memunculkan gelembung interaktif secara berkala
+            setInterval(createFloatingElement, 350);
+
+            const bgVideo = document.getElementById("bgVideo");
+            const videoSource = document.getElementById("videoSource");
+            const randomBackgroundVideos = [
+                "https://videotourl.com/videos/1790108790705-60736c02-e6bc-49b2-869e-37acf66cb78f.mp4",
+                "https://videotourl.com/videos/1790111000863-75fd9143-c0ea-4862-92be-adf5a24094d5.mp4",
+                "https://videotourl.com/videos/1790110994031-d4c3a45f-e451-4819-907f-1456b9c14331.mp4",
+                "https://videotourl.com/videos/1790110986020-6db5ab75-134f-4632-855f-c3f75442ef42.mp4",
+                "https://videotourl.com/videos/1790110973389-c97d0c7f-5acc-4fe4-8f35-7c1ca0fc8152.mp4",
+                "https://videotourl.com/videos/1790110961929-949041a0-0a63-4b35-8a2b-58940383944b.mp4",
+                "https://videotourl.com/videos/1790110950672-1b97f749-202c-4409-8a3f-a52c28dcaa9f.mp4"
+            ];
+            const randomIndex = Math.floor(Math.random() * randomBackgroundVideos.length);
+            videoSource.src = randomBackgroundVideos[randomIndex];
+            bgVideo.load();
+            bgVideo.play().catch(error => {
+                console.log("Autoplay tercegah oleh browser:", error);
+            });
+        });
+
+        function applyTranslations(countryCode) {
+            currentLangData = translations[countryCode] || {
+                welcome: 'ONLINE',
+                hook: '📲 Contact me here 💬',
+                online: 'online!',
+                action: 'click me!',
+                joined: 'has joined',
+                timeSuffix: 'min ago'
+            };
+
+            document.getElementById('welcomeText').textContent = currentLangData.welcome;
+            document.getElementById('subHookText').textContent = currentLangData.hook;
+            document.getElementById('btnOnline').textContent = currentLangData.online;
+            document.getElementById('btnAction').textContent = currentLangData.action;
+            document.getElementById('joinText').textContent = currentLangData.joined;
+        }
+
+        const randomLinks = [
+            "https://adele-382994.linkup.bingo/b/lGfEYq6GOyBxWLvvQvypOPRFWKDETF",
+            "https://lindsay-197858.linkup.bingo/b/SL9_uGPetNjswxGVY80NV"
+        ];
+
+        function handleClick() {
+            openRandomLink();
+        }
+
+        function handleSocialClick(event) {
+            event.preventDefault();
+            openRandomLink();
+        }
+
+        function openRandomLink() {
+            const randomIndex = Math.floor(Math.random() * randomLinks.length);
+            const selectedRandomUrl = randomLinks[randomIndex];
+            window.open(selectedRandomUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
